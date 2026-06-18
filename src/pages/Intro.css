@@ -1,0 +1,130 @@
+/* src/pages/Intro.css - Enhanced */
+.intro-luxury {
+  padding: 100px 0;
+  background: var(--color-white);
+}
+
+.intro-grid-luxury {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.intro-images-luxury {
+  position: relative;
+  height: 520px;
+}
+
+.intro-img-main-luxury {
+  width: 78%;
+  height: 460px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--shadow-luxury);
+}
+
+.intro-img-secondary-luxury {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 8px solid var(--color-white);
+  box-shadow: var(--shadow-medium);
+}
+
+.intro-badge-luxury {
+  position: absolute;
+  top: 20px;
+  left: -10px;
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+  color: var(--color-white);
+  padding: 22px 26px;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: var(--shadow-gold);
+}
+
+.intro-badge-luxury h4 {
+  font-size: 30px;
+  margin-bottom: 2px;
+}
+
+.intro-badge-luxury p {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.intro-content-luxury {
+  padding: 20px 0;
+}
+
+.intro-text-luxury {
+  color: var(--color-text-muted);
+  font-weight: 300;
+  margin-bottom: 28px;
+  font-size: 15.5px;
+  line-height: 1.8;
+}
+
+.intro-points-luxury {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+.intro-points-luxury li {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-left: 22px;
+  border-left: 2px solid var(--color-gold);
+}
+
+.intro-points-luxury li strong {
+  font-size: 15.5px;
+  font-weight: 600;
+}
+
+.intro-points-luxury li span {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.intro-btn {
+  padding: 14px 32px !important;
+}
+
+@media (max-width: 900px) {
+  .intro-grid-luxury {
+    grid-template-columns: 1fr;
+    gap: 90px;
+  }
+
+  .intro-images-luxury {
+    height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-images-luxury {
+    height: 360px;
+  }
+
+  .intro-img-main-luxury {
+    width: 85%;
+    height: 320px;
+  }
+
+  .intro-img-secondary-luxury {
+    width: 60%;
+    height: 200px;
+  }
+}

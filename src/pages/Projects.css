@@ -1,0 +1,337 @@
+/* src/pages/Projects.css - Enhanced Luxury Version */
+
+/* ── Section Container ── */
+.projects-luxury {
+  padding: 80px 0 100px;
+  background: var(--color-off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Decor */
+.projects-luxury::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.projects-luxury::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.projects-header-luxury {
+  text-align: center;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+}
+
+.projects-tag-luxury {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.projects-title-luxury {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--color-black);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.projects-title-luxury .gold-text {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.projects-subtitle-luxury {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.projects-header-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-gold);
+  margin: 16px auto 0;
+}
+
+/* ── Filter Buttons ── */
+.projects-filter-luxury {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 48px;
+  position: relative;
+  z-index: 1;
+  padding: 0 10px;
+}
+
+.filter-btn-luxury {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--color-white);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-body);
+}
+
+.filter-btn-luxury:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+}
+
+.filter-btn-luxury.active {
+  background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+  color: var(--color-white);
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-glow);
+}
+
+.filter-btn-luxury .filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 8px;
+  background: var(--color-off-white);
+  color: var(--color-text-muted);
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn-luxury.active .filter-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
+}
+
+.filter-btn-luxury:hover .filter-count {
+  background: var(--color-gold);
+  color: var(--color-white);
+}
+
+/* ── Loading ── */
+.projects-loader-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+/* ── Error ── */
+.projects-error-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* ── Empty State ── */
+.projects-empty-luxury {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  background: var(--color-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+}
+
+.projects-empty-luxury .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.projects-empty-luxury h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-black);
+  margin-bottom: 8px;
+}
+
+.projects-empty-luxury p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* ── Projects Grid ── */
+.projects-grid-luxury {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Results Count ── */
+.projects-results-luxury {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+  z-index: 1;
+}
+
+.results-count {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+.results-count strong {
+  color: var(--color-gold-dark);
+  font-weight: 600;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .projects-grid-luxury {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-luxury {
+    padding: 40px 0 60px;
+  }
+
+  .projects-header-luxury {
+    margin-bottom: 32px;
+  }
+
+  .projects-filter-luxury {
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  .filter-btn-luxury {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .filter-btn-luxury .filter-count {
+    min-width: 18px;
+    height: 18px;
+    font-size: 10px;
+    padding: 0 6px;
+  }
+
+  .projects-title-luxury {
+    font-size: 1.8rem;
+  }
+
+  .projects-subtitle-luxury {
+    font-size: 0.95rem;
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-grid-luxury {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .projects-filter-luxury {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0 10px 10px;
+    justify-content: flex-start;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .projects-filter-luxury::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn-luxury {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 11px;
+  }
+
+  .projects-empty-luxury {
+    padding: 60px 20px;
+  }
+
+  .projects-empty-luxury .empty-icon {
+    font-size: 36px;
+  }
+
+  .projects-results-luxury {
+    margin-top: 28px;
+    padding-top: 16px;
+  }
+
+  .results-count {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-luxury {
+    padding: 30px 0 40px;
+  }
+
+  .projects-title-luxury {
+    font-size: 1.5rem;
+  }
+
+  .filter-btn-luxury {
+    padding: 6px 12px;
+    font-size: 10px;
+    gap: 4px;
+  }
+
+  .filter-btn-luxury .filter-count {
+    min-width: 16px;
+    height: 16px;
+    font-size: 9px;
+    padding: 0 4px;
+  }
+}

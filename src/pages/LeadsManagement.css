@@ -1,0 +1,516 @@
+/* src/pages/LeadsManagement.css - Enhanced Luxury Version */
+
+/* ── Container ── */
+.leads-management-luxury {
+  padding: 32px 40px;
+  min-height: 100vh;
+  background: var(--color-off-white);
+}
+
+/* ── Header ── */
+.lm-header-luxury {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.lm-title-section h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 4px;
+}
+
+.lm-title-section h2::before {
+  content: '✦ ';
+  color: var(--color-gold);
+}
+
+.lm-subtitle-luxury {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.lm-stats-luxury {
+  display: flex;
+  gap: 12px;
+}
+
+.lm-stat-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  background: var(--color-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+}
+
+.lm-stat-badge .stat-number {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color-gold-dark);
+}
+
+.lm-stat-badge .stat-label {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+/* ── Error ── */
+.lm-error-luxury {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(192, 57, 43, 0.08);
+  color: #c0392b;
+  padding: 12px 16px;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-bottom: 20px;
+  border-left: 3px solid #c0392b;
+}
+
+.lm-error-luxury .error-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #c0392b;
+  color: var(--color-white);
+  font-size: 12px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── Loading ── */
+.lm-loading-luxury {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0;
+  gap: 16px;
+}
+
+.lm-loader {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-gold);
+  border-radius: 50%;
+  animation: spin-loader 0.8s linear infinite;
+}
+
+@keyframes spin-loader {
+  to { transform: rotate(360deg); }
+}
+
+.lm-loading-luxury p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* ── Empty State ── */
+.lm-empty-luxury {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 20px;
+  text-align: center;
+  background: var(--color-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+}
+
+.lm-empty-luxury .empty-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.lm-empty-luxury h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-black);
+  margin-bottom: 8px;
+}
+
+.lm-empty-luxury p {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* ── Table Wrapper ── */
+.lm-table-wrapper-luxury {
+  background: var(--color-white);
+  border-radius: 4px;
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+}
+
+/* ── Table ── */
+.lm-table-luxury {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lm-table-luxury thead {
+  background: var(--color-off-white);
+}
+
+.lm-table-luxury th {
+  text-align: left;
+  padding: 16px 20px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.lm-table-luxury td {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+  color: var(--color-black);
+}
+
+.lm-table-luxury tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ── Name Cell ── */
+.lm-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lm-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* ── Table Buttons ── */
+.lm-btn-view,
+.lm-btn-delete {
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  margin-right: 6px;
+}
+
+.lm-btn-view {
+  color: var(--color-gold-dark);
+  border-color: var(--color-gold);
+}
+
+.lm-btn-view:hover {
+  background: var(--color-gold);
+  color: var(--color-white);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glow);
+}
+
+.lm-btn-delete {
+  color: #c0392b;
+  border-color: #e74c3c;
+}
+
+.lm-btn-delete:hover {
+  background: #c0392b;
+  color: var(--color-white);
+  transform: translateY(-1px);
+}
+
+/* ── Modal Overlay ── */
+.lm-modal-overlay-luxury {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(13, 13, 13, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* ── Modal ── */
+.lm-modal-luxury {
+  background: var(--color-white);
+  border-radius: 4px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: var(--shadow-elevated);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Modal Gold Accent */
+.lm-modal-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+}
+
+/* ── Modal Header ── */
+.lm-modal-header-luxury {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 28px 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lm-modal-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  color: var(--color-white);
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.lm-modal-header-luxury h3 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-black);
+  flex: 1;
+}
+
+.lm-modal-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-off-white);
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+}
+
+.lm-modal-close:hover {
+  background: #c0392b;
+  color: var(--color-white);
+}
+
+/* ── Modal Body ── */
+.lm-modal-body-luxury {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.lm-modal-field {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.lm-modal-field .field-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.lm-modal-field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+
+.lm-modal-field p {
+  font-size: 14px;
+  color: var(--color-black);
+}
+
+.lm-modal-field.full-width {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lm-modal-field.full-width .field-icon {
+  margin-top: 0;
+}
+
+.lm-modal-message {
+  background: var(--color-off-white);
+  padding: 12px 16px;
+  border-radius: 4px;
+  line-height: 1.7;
+  font-size: 14px;
+  color: var(--color-black);
+  min-height: 60px;
+}
+
+/* ── Modal Footer ── */
+.lm-modal-footer-luxury {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 16px 28px 24px;
+  border-top: 1px solid var(--color-border);
+}
+
+.lm-modal-btn-close,
+.lm-modal-btn-delete {
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.lm-modal-btn-close {
+  background: var(--color-off-white);
+  color: var(--color-text-muted);
+}
+
+.lm-modal-btn-close:hover {
+  background: var(--color-border);
+}
+
+.lm-modal-btn-delete {
+  background: #c0392b;
+  color: var(--color-white);
+}
+
+.lm-modal-btn-delete:hover {
+  background: #a93226;
+  transform: translateY(-1px);
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .lm-table-luxury {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .leads-management-luxury {
+    padding: 20px;
+  }
+
+  .lm-header-luxury {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .lm-title-section h2 {
+    font-size: 22px;
+  }
+
+  .lm-stat-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lm-modal-luxury {
+    margin: 20px;
+  }
+
+  .lm-modal-header-luxury {
+    padding: 20px;
+  }
+
+  .lm-modal-body-luxury {
+    padding: 20px;
+  }
+
+  .lm-modal-footer-luxury {
+    padding: 16px 20px 20px;
+    flex-direction: column;
+  }
+
+  .lm-modal-btn-close,
+  .lm-modal-btn-delete {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .leads-management-luxury {
+    padding: 12px;
+  }
+
+  .lm-table-luxury th,
+  .lm-table-luxury td {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .lm-avatar {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .lm-btn-view,
+  .lm-btn-delete {
+    padding: 4px 12px;
+    font-size: 11px;
+  }
+
+  .lm-modal-luxury {
+    margin: 12px;
+  }
+}

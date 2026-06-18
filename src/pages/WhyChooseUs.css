@@ -1,0 +1,202 @@
+/* src/pages/WhyChooseUs.css - Updated with DreamProSpaces Branding */
+
+.why-choose-us-luxury {
+  background: var(--color-off-white);
+  padding: 100px 0;
+}
+
+.why-grid-luxury {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.why-image-luxury {
+  height: 560px;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: var(--shadow-luxury);
+}
+
+.why-image-luxury img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.why-image-badge {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: var(--color-gold);
+  color: var(--color-white);
+  padding: 12px 24px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  border-radius: 2px;
+}
+
+.why-content-luxury {
+  padding: 20px 0;
+}
+
+.why-subtitle-luxury {
+  margin-bottom: 36px;
+}
+
+.why-reasons-luxury {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.why-reason-luxury {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--color-white);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.why-reason-luxury:hover {
+  box-shadow: var(--shadow-luxury);
+  transform: translateX(4px);
+}
+
+.why-reason-icon-luxury {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: var(--color-black);
+  color: var(--color-gold);
+  border-radius: 50%;
+  font-size: 16px;
+}
+
+.why-reason-luxury h4 {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.why-reason-luxury p {
+  font-size: 14px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+  max-width: 440px;
+}
+
+/* ── Section Tag ── */
+.section-tag-luxury {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+/* ── Section Title ── */
+.section-title-luxury {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--color-black);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.section-title-luxury .gold-text {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.section-subtitle-luxury {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 600px;
+  line-height: 1.8;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .why-grid-luxury {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .why-image-luxury {
+    height: 380px;
+  }
+
+  .why-reason-luxury p {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-choose-us-luxury {
+    padding: 60px 0;
+  }
+
+  .why-grid-luxury {
+    gap: 30px;
+  }
+
+  .why-image-luxury {
+    height: 300px;
+  }
+
+  .why-reason-luxury {
+    padding: 16px;
+  }
+
+  .why-reason-icon-luxury {
+    width: 38px;
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .why-reason-luxury h4 {
+    font-size: 15px;
+  }
+
+  .why-reason-luxury p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-choose-us-luxury {
+    padding: 40px 0;
+  }
+
+  .why-image-luxury {
+    height: 240px;
+  }
+
+  .why-image-badge {
+    bottom: 16px;
+    left: 16px;
+    padding: 8px 16px;
+    font-size: 11px;
+  }
+
+  .why-reason-luxury {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .why-reason-luxury p {
+    max-width: 100%;
+  }
+}

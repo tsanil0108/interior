@@ -1,0 +1,66 @@
+// src/App.jsx
+import React from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
+// Layouts
+import Mainlayout from './layouts/Mainlayout.jsx'
+import AdminLayout from './layouts/AdminLayout.jsx'
+
+// Pages
+import Hero from './pages/Hero.jsx'
+import Intro from './pages/Intro.jsx'
+import About from './pages/About.jsx'
+import Contact from './pages/Contact.jsx'  // ✅ Fixed: .jsx extension
+import Projects from './pages/Projects.jsx'  // ✅ Fixed: imported from pages
+import WhyChooseUs from './pages/WhyChooseUs.jsx'
+import Testimonials from './pages/Testimonials.jsx'
+import Blogpage from './pages/Blogpage.jsx'
+import AdminLogin from './pages/AdminLogin.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import ProjectsManagement from './pages/ProjectsManagement.jsx'
+import LeadsManagement from './pages/LeadsManagement.jsx'
+
+// Components
+import FeaturedProjects from './pages/FeaturedProjects.jsx'
+import ServicesSection from './components/ServicesSection.jsx'
+import ContactCTA from './components/ContactCTA.jsx'
+
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <Intro />
+      <WhyChooseUs />
+      <FeaturedProjects />
+      <Testimonials />
+      <ContactCTA />
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <Routes>
+      {/* Public site */}
+      <Route path="/" element={<Mainlayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<About />} />
+        <Route path="services" element={<ServicesSection />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="blog" element={<Blogpage />} />
+        <Route path="contact" element={<Contact />} />  {/* ✅ Fixed: Only one contact route */}
+      </Route>
+
+      {/* Admin login (public) */}
+      <Route path="/admin/login" element={<AdminLogin />} />
+
+      {/* Admin panel (protected by AdminLayout) */}
+      <Route path="/admin" element={<AdminLayout />}>
+        <Route index element={<Navigate to="/admin/dashboard" replace />} />
+        <Route path="dashboard" element={<Dashboard />} />
+        <Route path="projects" element={<ProjectsManagement />} />
+        <Route path="leads" element={<LeadsManagement />} />
+      </Route>
+    </Routes>
+  )
+}

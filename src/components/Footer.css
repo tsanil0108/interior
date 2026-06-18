@@ -1,0 +1,107 @@
+/* src/components/Footer.css */
+.footer-luxury {
+  background: var(--color-black);
+  color: rgba(255, 255, 255, 0.7);
+  padding-top: 80px;
+}
+
+.footer-grid-luxury {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.3fr;
+  gap: 50px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-logo-luxury {
+  font-family: var(--font-heading);
+  font-size: 26px;
+  color: var(--color-white);
+  margin-bottom: 18px;
+}
+
+.footer-logo-luxury span { color: var(--color-gold); }
+
+.footer-brand-luxury p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 340px;
+  margin-bottom: 24px;
+}
+
+.footer-socials-luxury {
+  display: flex;
+  gap: 12px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--color-white);
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-black);
+}
+
+.footer-col h4 {
+  color: var(--color-white);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 22px;
+  letter-spacing: 0.5px;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.footer-col ul li a { transition: all 0.3s ease; }
+.footer-col ul li a:hover { color: var(--color-gold); }
+
+.footer-contact-luxury .contact-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.contact-icon { flex-shrink: 0; color: var(--color-gold); }
+
+.footer-bottom-luxury { padding: 22px 0; }
+
+.footer-bottom-inner-luxury {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-bottom-inner-luxury p {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 900px) {
+  .footer-grid-luxury { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .footer-grid-luxury { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom-inner-luxury { flex-direction: column; text-align: center; }
+}

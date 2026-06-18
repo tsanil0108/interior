@@ -1,0 +1,135 @@
+/* src/pages/Services.css */
+.services-luxury {
+  padding: 100px 0;
+  background: var(--color-off-white);
+}
+
+.services-grid-luxury {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.service-card-luxury {
+  background: var(--color-white);
+  padding: 40px 32px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-card-luxury:hover::before {
+  transform: scaleX(1);
+}
+
+.service-card-luxury:hover {
+  box-shadow: var(--shadow-luxury);
+}
+
+.service-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-off-white);
+  border-radius: 50%;
+  margin-bottom: 24px;
+  transition: all 0.4s ease;
+}
+
+.service-card-luxury:hover .service-icon-wrapper {
+  background: var(--color-gold);
+  transform: scale(1.05);
+}
+
+.service-icon {
+  font-size: 28px;
+  transition: transform 0.4s ease;
+}
+
+.service-card-luxury:hover .service-icon {
+  transform: scale(1.1);
+}
+
+.service-title {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 12px;
+}
+
+.service-description {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-gold-dark);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.service-link svg {
+  transition: transform 0.3s ease;
+}
+
+.service-link:hover {
+  color: var(--color-gold);
+}
+
+.service-link:hover svg {
+  transform: translateX(4px);
+}
+
+.service-gold-accent {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.05), transparent);
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .services-grid-luxury {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-luxury {
+    padding: 60px 0;
+  }
+  
+  .services-grid-luxury {
+    grid-template-columns: 1fr;
+  }
+}

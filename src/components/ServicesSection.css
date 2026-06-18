@@ -1,0 +1,226 @@
+/* src/components/ServicesSection.css */
+
+/* ── Section Container ── */
+.services-section-luxury {
+  padding: 100px 0;
+  background: var(--color-off-white);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Decor */
+.services-section-luxury::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.services-section-luxury::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── Header ── */
+.services-header-luxury {
+  text-align: center;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.services-tag-luxury {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+}
+
+.services-title-luxury {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 300;
+  color: var(--color-black);
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.services-title-luxury .gold-text {
+  color: var(--color-gold);
+  font-weight: 600;
+}
+
+.services-subtitle-luxury {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  font-weight: 300;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.services-header-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-gold);
+  margin: 16px auto 0;
+}
+
+/* ── Services Grid ── */
+.services-grid-luxury {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.service-item-wrapper {
+  height: 100%;
+}
+
+/* ── CTA ── */
+.services-cta-luxury {
+  display: flex;
+  justify-content: center;
+  margin-top: 56px;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-cta-services-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 40px;
+  background: transparent;
+  color: var(--color-black);
+  border: 1px solid var(--color-black);
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-cta-services-luxury::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-black);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-cta-services-luxury:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.btn-cta-services-luxury span,
+.btn-cta-services-luxury svg {
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.btn-cta-services-luxury:hover {
+  color: var(--color-white);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-cta-services-luxury:hover svg {
+  transform: translateX(4px);
+}
+
+.btn-cta-services-luxury svg {
+  transition: transform 0.3s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .services-grid-luxury {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-section-luxury {
+    padding: 60px 0;
+  }
+
+  .services-header-luxury {
+    margin-bottom: 40px;
+  }
+
+  .services-title-luxury {
+    font-size: 1.8rem;
+  }
+
+  .services-subtitle-luxury {
+    font-size: 0.95rem;
+    padding: 0 16px;
+  }
+
+  .btn-cta-services-luxury {
+    padding: 14px 32px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-grid-luxury {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .services-cta-luxury {
+    margin-top: 36px;
+  }
+
+  .btn-cta-services-luxury {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-section-luxury {
+    padding: 40px 0;
+  }
+
+  .services-title-luxury {
+    font-size: 1.5rem;
+  }
+
+  .services-tag-luxury {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .services-header-line {
+    width: 40px;
+  }
+}

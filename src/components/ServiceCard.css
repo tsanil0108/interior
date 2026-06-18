@@ -1,0 +1,186 @@
+/* src/components/ServiceCard.css */
+
+/* ── Card Container ── */
+.service-card-luxury {
+  background: var(--color-white);
+  padding: 36px 28px;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Top Gold Accent Line ── */
+.service-card-luxury::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-gold), var(--color-gold-dark));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.service-card-luxury:hover::before {
+  transform: scaleX(1);
+}
+
+/* ── Hover Effects ── */
+.service-card-luxury:hover {
+  box-shadow: var(--shadow-luxury);
+  transform: translateY(-8px);
+  border-color: var(--color-gold);
+}
+
+/* ── Icon ── */
+.service-card-icon-luxury {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-off-white);
+  border-radius: 50%;
+  font-size: 28px;
+  margin-bottom: 20px;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+.service-card-luxury:hover .service-card-icon-luxury {
+  background: var(--color-gold);
+  transform: scale(1.05);
+}
+
+.service-card-icon-luxury .service-icon {
+  transition: transform 0.4s ease;
+}
+
+.service-card-luxury:hover .service-card-icon-luxury .service-icon {
+  transform: scale(1.1);
+}
+
+/* ── Glow Effect ── */
+.service-card-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card-luxury:hover .service-card-glow {
+  opacity: 1;
+  box-shadow: 0 0 30px rgba(192, 160, 98, 0.2);
+}
+
+/* ── Title ── */
+.service-card-title-luxury {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-black);
+  margin-bottom: 10px;
+}
+
+/* ── Description ── */
+.service-card-description-luxury {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+/* ── Footer ── */
+.service-card-footer-luxury {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 16px;
+  border-top: 1px solid var(--color-border);
+}
+
+.service-card-link-luxury {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-gold-dark);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.service-card-link-luxury svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.service-card-luxury:hover .service-card-link-luxury {
+  color: var(--color-gold);
+}
+
+.service-card-luxury:hover .service-card-link-luxury svg {
+  transform: translateX(4px);
+}
+
+/* ── Decorative Accent ── */
+.service-card-accent {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(192, 160, 98, 0.04), transparent);
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .service-card-luxury {
+    padding: 28px 20px;
+  }
+
+  .service-card-icon-luxury {
+    width: 52px;
+    height: 52px;
+    font-size: 22px;
+  }
+
+  .service-card-title-luxury {
+    font-size: 1.1rem;
+  }
+
+  .service-card-description-luxury {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .service-card-luxury {
+    padding: 24px 16px;
+  }
+
+  .service-card-icon-luxury {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+
+  .service-card-title-luxury {
+    font-size: 1rem;
+  }
+}
