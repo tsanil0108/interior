@@ -1,6 +1,5 @@
-/* src/pages/Dashboard.css - Enhanced Luxury Version */
+/* src/pages/Dashboard.css */
 
-/* ── Dashboard Container ── */
 .dashboard-luxury {
   padding: 32px 40px;
   min-height: 100vh;
@@ -89,9 +88,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px;
   flex-wrap: wrap;
   gap: 16px;
+  margin-bottom: 40px;
 }
 
 .dashboard-title-section h2 {
@@ -156,7 +155,6 @@
   box-shadow: var(--shadow-luxury);
 }
 
-/* Card Variants */
 .stat-card-gold {
   border-left: 3px solid var(--color-gold);
 }
@@ -165,7 +163,6 @@
   border-left: 3px solid var(--color-black);
 }
 
-/* Card Glow Effect */
 .stat-card-glow {
   position: absolute;
   top: -50%;
@@ -176,7 +173,6 @@
   pointer-events: none;
 }
 
-/* Card Bottom Line */
 .stat-card-line {
   position: absolute;
   bottom: 0;
@@ -191,7 +187,6 @@
   width: 100%;
 }
 
-/* Card Icon */
 .stat-card-icon-luxury {
   display: flex;
   align-items: center;
@@ -210,7 +205,6 @@
   transform: scale(1.05);
 }
 
-/* Card Content */
 .stat-card-content-luxury {
   display: flex;
   flex-direction: column;

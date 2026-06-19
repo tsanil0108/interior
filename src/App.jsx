@@ -10,8 +10,9 @@ import AdminLayout from './layouts/AdminLayout.jsx'
 import Hero from './pages/Hero.jsx'
 import Intro from './pages/Intro.jsx'
 import About from './pages/About.jsx'
-import Contact from './pages/Contact.jsx'  // ✅ Fixed: .jsx extension
-import Projects from './pages/Projects.jsx'  // ✅ Fixed: imported from pages
+import Contact from './pages/Contact.jsx'
+import Projects from './pages/Projects.jsx'
+import Services from './pages/Services.jsx'
 import WhyChooseUs from './pages/WhyChooseUs.jsx'
 import Testimonials from './pages/Testimonials.jsx'
 import Blogpage from './pages/Blogpage.jsx'
@@ -19,6 +20,7 @@ import AdminLogin from './pages/AdminLogin.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import ProjectsManagement from './pages/ProjectsManagement.jsx'
 import LeadsManagement from './pages/LeadsManagement.jsx'
+import ReviewsManagement from './pages/ReviewsManagement.jsx'  // ✅ ADDED
 
 // Components
 import FeaturedProjects from './pages/FeaturedProjects.jsx'
@@ -45,10 +47,10 @@ export default function App() {
       <Route path="/" element={<Mainlayout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<About />} />
-        <Route path="services" element={<ServicesSection />} />
+        <Route path="services" element={<Services />} />
         <Route path="projects" element={<Projects />} />
         <Route path="blog" element={<Blogpage />} />
-        <Route path="contact" element={<Contact />} />  {/* ✅ Fixed: Only one contact route */}
+        <Route path="contact" element={<Contact />} />
       </Route>
 
       {/* Admin login (public) */}
@@ -60,6 +62,7 @@ export default function App() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="projects" element={<ProjectsManagement />} />
         <Route path="leads" element={<LeadsManagement />} />
+        <Route path="reviews" element={<ReviewsManagement />} />  {/* ✅ ADDED */}
       </Route>
     </Routes>
   )

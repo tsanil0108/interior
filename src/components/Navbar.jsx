@@ -6,11 +6,11 @@ import './Navbar.css';
 
 const NAV_LINKS = [
   { label: 'Home', path: '/' },
-  { label: 'About Us', path: '/about' },
+  { label: 'About', path: '/about' },
   { label: 'Services', path: '/services' },
   { label: 'Projects', path: '/projects' },
   { label: 'Blog', path: '/blog' },
-  { label: 'Contact Us', path: '/contact' },
+  { label: 'Contact', path: '/contact' },
 ];
 
 const Navbar = () => {
@@ -39,7 +39,7 @@ const Navbar = () => {
       <div className="container navbar-inner-luxury">
         <Link to="/" className="navbar-logo-luxury" onClick={closeMenu}>
           <span className="logo-main">DREAM<span>PRO</span>SPACES</span>
-          <span className="logo-sub">Interior Work</span>
+          <span className="logo-sub">Interior Works & Contracting</span>
         </Link>
 
         <nav className={`navbar-links-luxury ${isMenuOpen ? 'navbar-links-open-luxury' : ''}`}>

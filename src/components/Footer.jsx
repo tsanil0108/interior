@@ -20,9 +20,8 @@ const Footer = () => {
             DREAM<span>PRO</span>SPACES
           </h3>
           <p>
-            Crafting timeless interiors that blend modern luxury with personal
-            expression. From concept to completion, we transform spaces into
-            statements.
+            Premium interior design and contracting services. 
+            From concept to completion — we create spaces that inspire.
           </p>
           <div className="footer-socials-luxury">
             <a href="#" aria-label="Facebook" className="social-link">f</a>
@@ -79,7 +78,7 @@ const Footer = () => {
             <li className="contact-item">
               <span className="contact-icon">📍</span>
               <span>
-                Millennium  Building, Shop No.10,<br />
+                Millennium Building, Shop No.10,<br />
                 Lokhandawala, Kandivali East,<br />
                 Mumbai - 400101
               </span>

@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import PageTransition from '../components/PageTransition';
+import FloatingButtons from '../components/FloatingButtons'; // ✅ Add this import
+import './MainLayout.css';
 
 const MainLayout = () => {
   return (
@@ -19,6 +21,9 @@ const MainLayout = () => {
       </motion.main>
       
       <Footer />
+      
+      {/* ✅ Floating WhatsApp & Call Buttons - Shows on every page */}
+      <FloatingButtons />
     </div>
   );
 };

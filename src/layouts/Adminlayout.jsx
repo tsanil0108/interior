@@ -20,22 +20,20 @@ const AdminLayout = () => {
     { path: '/admin/dashboard', label: 'Dashboard', icon: '📊' },
     { path: '/admin/projects', label: 'Projects Management', icon: '🏗️' },
     { path: '/admin/leads', label: 'Leads Management', icon: '📋' },
+    { path: '/admin/reviews', label: 'Reviews Management', icon: '⭐' },
   ];
 
   return (
     <div className="admin-layout-luxury">
-      {/* Sidebar */}
       <aside className="admin-sidebar-luxury">
-        {/* Logo */}
         <div className="admin-sidebar-logo-luxury">
           <div className="logo-icon">✦</div>
           <div className="logo-text">
-            LUMI<span>ÈRE</span>
+            DREAM<span>PRO</span>SPACES
             <small>Admin Panel</small>
           </div>
         </div>
 
-        {/* Navigation */}
         <nav className="admin-nav-luxury">
           {navItems.map((item) => (
             <NavLink
@@ -47,18 +45,10 @@ const AdminLayout = () => {
             >
               <span className="nav-icon">{item.icon}</span>
               <span className="nav-label">{item.label}</span>
-              {({ isActive }) => isActive && (
-                <motion.span 
-                  className="nav-active-dot"
-                  layoutId="activeDot"
-                  transition={{ duration: 0.3 }}
-                />
-              )}
             </NavLink>
           ))}
         </nav>
 
-        {/* Footer */}
         <div className="admin-sidebar-footer-luxury">
           <div className="admin-user-info">
             <div className="admin-avatar">
@@ -77,11 +67,9 @@ const AdminLayout = () => {
           </button>
         </div>
 
-        {/* Sidebar Decoration */}
         <div className="admin-sidebar-decoration" />
       </aside>
 
-      {/* Main Content */}
       <main className="admin-content-luxury">
         <motion.div
           initial={{ opacity: 0, y: 10 }}

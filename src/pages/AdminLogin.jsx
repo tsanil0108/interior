@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import authService from '../services/AuthService';
+import authService from '../services/authService';
 import './AdminLogin.css';
 
 export default function AdminLogin() {
@@ -30,7 +30,6 @@ export default function AdminLogin() {
 
   return (
     <div className="admin-login-luxury">
-      {/* Background Decorations */}
       <div className="admin-login-bg-decoration" />
       <div className="admin-login-bg-decoration-2" />
       
@@ -40,14 +39,12 @@ export default function AdminLogin() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       >
-        {/* Logo */}
         <div className="admin-login-logo-luxury">
           <span className="logo-icon">✦</span>
-          <h1>LUMI<span>ÈRE</span></h1>
+          <h1>DREAM<span>PRO</span>SPACES</h1>
           <p>Admin Panel</p>
         </div>
 
-        {/* Form */}
         <form className="admin-login-form-luxury" onSubmit={handleSubmit}>
           <h2>Welcome Back</h2>
           <p className="admin-login-subtitle">Sign in to manage your interior design business</p>

@@ -1,0 +1,119 @@
+/* src/pages/ReviewsManagement.css */
+.reviews-management {
+  padding: 32px 40px;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.reviews-header h2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  color: var(--color-black);
+}
+
+.reviews-count {
+  padding: 8px 16px;
+  background: var(--color-off-white);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.reviews-error {
+  color: #c0392b;
+  padding: 12px;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+.reviews-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+}
+
+.reviews-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-white);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: var(--shadow-soft);
+}
+
+.reviews-table th,
+.reviews-table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.reviews-table th {
+  background: var(--color-off-white);
+  color: var(--color-text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.review-quote {
+  max-width: 250px;
+  color: var(--color-text-muted);
+  font-size: 13px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.approved {
+  background: rgba(46, 204, 113, 0.15);
+  color: #27ae60;
+}
+
+.status-badge.pending {
+  background: rgba(243, 156, 18, 0.15);
+  color: #f39c12;
+}
+
+.btn-approve {
+  padding: 6px 14px;
+  background: var(--color-gold);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.btn-delete {
+  padding: 6px 14px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-approve:hover,
+.btn-delete:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .reviews-management {
+    padding: 16px;
+  }
+  .reviews-table {
+    display: block;
+    overflow-x: auto;
+  }
+}

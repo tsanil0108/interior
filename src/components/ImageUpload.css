@@ -19,8 +19,7 @@
   position: relative;
   height: 280px;
   overflow: hidden;
-  background: var(--color-off-white);  /* ✅ Changed from black to off-white */
-  background: linear-gradient(135deg, #f0ebe3, #e8ddd0); /* ✅ Or use gradient */
+  background: var(--color-black);
 }
 
 /* ✅ Slide image - smooth transition */
@@ -145,7 +144,7 @@
 .project-card-hover-luxury {
   position: absolute;
   inset: 0;
-  background: rgba(13, 13, 13, 0.4); /* ✅ Reduced opacity */
+  background: rgba(13, 13, 13, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,10 +220,6 @@
     font-size: 16px;
     opacity: 1;
     background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .project-card-arrow:hover {
-    transform: translateY(-50%) scale(1.05);
   }
 }
 

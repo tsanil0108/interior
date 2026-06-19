@@ -2,9 +2,16 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import projectService from '../services/projectService';
+import ImageUpload from '../components/ImageUpload';  // ✅ Import ImageUpload
 import './ProjectsManagement.css';
 
-const emptyForm = { title: '', category: '', imageUrl: '', description: '' };
+const emptyForm = { 
+  title: '', 
+  category: '', 
+  imageUrl: '', 
+  description: '',
+  images: ''
+};
 
 export default function ProjectsManagement() {
   const [projects, setProjects] = useState([]);
@@ -13,6 +20,7 @@ export default function ProjectsManagement() {
   const [form, setForm] = useState(emptyForm);
   const [editingId, setEditingId] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [uploadedImages, setUploadedImages] = useState([]);
 
   const loadProjects = async () => {
     setLoading(true);
@@ -35,8 +43,14 @@ export default function ProjectsManagement() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  const handleImagesChange = (images) => {
+    setUploadedImages(images);
+    setForm({ ...form, images: images.join(',') });
+  };
+
   const resetForm = () => {
     setForm(emptyForm);
+    setUploadedImages([]);
     setEditingId(null);
     setShowForm(false);
   };
@@ -44,10 +58,13 @@ export default function ProjectsManagement() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const imageUrl = uploadedImages.length > 0 ? uploadedImages[0] : form.imageUrl;
+      const payload = { ...form, imageUrl };
+      
       if (editingId) {
-        await projectService.updateProject(editingId, form);
+        await projectService.updateProject(editingId, payload);
       } else {
-        await projectService.addProject(form);
+        await projectService.addProject(payload);
       }
       resetForm();
       loadProjects();
@@ -57,11 +74,15 @@ export default function ProjectsManagement() {
   };
 
   const handleEdit = (project) => {
+    const images = project.images ? project.images.split(',').filter(img => img.trim()) : [];
+    setUploadedImages(images);
+    
     setForm({
       title: project.title,
       category: project.category,
       imageUrl: project.imageUrl,
       description: project.description,
+      images: project.images || '',
     });
     setEditingId(project.id);
     setShowForm(true);
@@ -151,14 +172,17 @@ export default function ProjectsManagement() {
                 required 
                 className="pm-input"
               />
-              <input 
-                name="imageUrl" 
-                placeholder="Image URL" 
-                value={form.imageUrl} 
-                onChange={handleChange} 
-                required 
-                className="pm-input full-width"
-              />
+
+              {/* ✅ IMAGE UPLOAD COMPONENT - Add this */}
+              <div className="pm-input full-width">
+                <ImageUpload 
+                  onImagesChange={handleImagesChange}
+                  existingImages={uploadedImages}
+                  maxImages={10}
+                  label="Upload Project Images"
+                />
+              </div>
+
               <textarea 
                 name="description" 
                 placeholder="Project Description" 
@@ -210,6 +234,7 @@ export default function ProjectsManagement() {
                   <th>Image</th>
                   <th>Title</th>
                   <th>Category</th>
+                  <th>Images</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -235,6 +260,15 @@ export default function ProjectsManagement() {
                     <td className="pm-title-cell">{p.title}</td>
                     <td>
                       <span className="pm-category-badge">{p.category}</span>
+                    </td>
+                    <td>
+                      {p.images && p.images.split(',').length > 0 ? (
+                        <span className="pm-images-count">
+                          📸 {p.images.split(',').length}
+                        </span>
+                      ) : (
+                        <span className="pm-images-count">📸 1</span>
+                      )}
                     </td>
                     <td>
                       <button className="pm-btn-edit" onClick={() => handleEdit(p)}>
