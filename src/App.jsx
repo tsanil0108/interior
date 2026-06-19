@@ -3,7 +3,7 @@ import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 
 // Layouts
-import Mainlayout from './layouts/Mainlayout.jsx'
+import MainLayout from './layouts/MainLayout.jsx'
 import AdminLayout from './layouts/AdminLayout.jsx'
 
 // Pages
@@ -44,7 +44,7 @@ export default function App() {
   return (
     <Routes>
       {/* Public site */}
-      <Route path="/" element={<Mainlayout />}>
+      <Route path="/" element={<MainLayout />}>
         <Route index element={<HomePage />} />
         <Route path="about" element={<About />} />
         <Route path="services" element={<Services />} />
@@ -64,6 +64,9 @@ export default function App() {
         <Route path="leads" element={<LeadsManagement />} />
         <Route path="reviews" element={<ReviewsManagement />} />  {/* ✅ ADDED */}
       </Route>
+
+      {/* Catch-all */}
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }
