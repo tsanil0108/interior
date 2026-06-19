@@ -129,7 +129,7 @@ const Testimonials = () => {
     setTimeout(() => setIsAutoPlaying(true), 3000);
   };
 
-  // ✅ Handle review form submission
+
   const handleFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
