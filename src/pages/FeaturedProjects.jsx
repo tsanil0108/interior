@@ -6,7 +6,7 @@ import projectService from '../services/projectService';
 import { getErrorMessage } from '../services/errorHandler';
 import ProjectCard from '../components/ProjectCard';
 import Loader from '../components/Loader';
-import ErrorMessage from '../components/Errormessage';
+import ErrorMessage from '../components/ErrorMessage';
 import './FeaturedProjects.css';
 
 const FeaturedProjects = () => {
