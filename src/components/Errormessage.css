@@ -119,13 +119,13 @@
   .error-message-luxury {
     padding: 32px 20px;
   }
-  
+
   .error-icon-luxury {
     width: 52px;
     height: 52px;
     font-size: 22px;
   }
-  
+
   .error-title-luxury { font-size: 18px; }
   .error-message-text-luxury { font-size: 14px; }
 }

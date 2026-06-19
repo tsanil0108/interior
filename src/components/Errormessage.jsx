@@ -3,9 +3,9 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './ErrorMessage.css';
 
-const ErrorMessage = ({ 
-  message = 'Something went wrong.', 
-  onRetry, 
+const ErrorMessage = ({
+  message = 'Something went wrong.',
+  onRetry,
   variant = 'default',
   title = 'Oops!',
   icon = '!',
@@ -30,7 +30,7 @@ const ErrorMessage = ({
   };
 
   return (
-    <motion.div 
+    <motion.div
       className={`error-message-luxury ${getVariantClass()}`}
       role="alert"
       initial={{ opacity: 0, scale: 0.95 }}
@@ -38,7 +38,7 @@ const ErrorMessage = ({
       transition={{ duration: 0.4 }}
     >
       {showIcon && (
-        <motion.div 
+        <motion.div
           className="error-icon-luxury"
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
@@ -55,7 +55,7 @@ const ErrorMessage = ({
 
       <div className="error-actions-luxury">
         {onRetry && (
-          <motion.button 
+          <motion.button
             className="error-retry-btn-luxury"
             onClick={onRetry}
             whileHover={{ scale: 1.02 }}
