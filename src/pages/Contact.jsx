@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import PageBanner from '../components/PageBanner';
-import contactService from '../api/contactService';
+import contactService from '../api/ContactService';
+
 import './Contact.css';
 
 const Contact = () => {
