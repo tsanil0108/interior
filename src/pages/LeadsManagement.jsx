@@ -1,139 +1,101 @@
-// src/pages/ProjectsManagement.jsx
+// src/pages/LeadsManagement.jsx
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import projectService from '../services/projectService';
-import ImageUpload from '../components/ImageUpload';  // ✅ Import ImageUpload
-import './ProjectsManagement.css';
+import contactService from '../api/contactService';  // ✅ Correct import path
+import './LeadsManagement.css';
 
-const emptyForm = { 
-  title: '', 
-  category: '', 
-  imageUrl: '', 
-  description: '',
-  images: ''  // Store as comma-separated string
-};
-
-export default function ProjectsManagement() {
-  const [projects, setProjects] = useState([]);
+export default function LeadsManagement() {
+  const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [form, setForm] = useState(emptyForm);
-  const [editingId, setEditingId] = useState(null);
-  const [showForm, setShowForm] = useState(false);
-  const [uploadedImages, setUploadedImages] = useState([]);
+  const [selectedLead, setSelectedLead] = useState(null);
+  const [showModal, setShowModal] = useState(false);
 
-  const loadProjects = async () => {
+  const loadLeads = async () => {
     setLoading(true);
     setError('');
     try {
-      const res = await projectService.getAllProjects();
-      setProjects(res.data.data);
+      const res = await contactService.getAllInquiries();  // ✅ Correct method
+      setLeads(res.data.data || []);
     } catch (err) {
-      setError('Failed to load projects.');
+      setError('Failed to load leads.');
+      console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    loadProjects();
+    loadLeads();
   }, []);
 
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const handleViewLead = (lead) => {
+    setSelectedLead(lead);
+    setShowModal(true);
   };
 
-  const handleImagesChange = (images) => {
-    setUploadedImages(images);
-    // Store images as comma-separated string
-    setForm({ ...form, images: images.join(',') });
-  };
-
-  const resetForm = () => {
-    setForm(emptyForm);
-    setUploadedImages([]);
-    setEditingId(null);
-    setShowForm(false);
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDeleteLead = async (id) => {
+    if (!window.confirm('Delete this lead?')) return;
     try {
-      // Set the main image as the first uploaded image or fallback
-      const imageUrl = uploadedImages.length > 0 ? uploadedImages[0] : form.imageUrl;
-      const payload = { ...form, imageUrl };
-      
-      if (editingId) {
-        await projectService.updateProject(editingId, payload);
-      } else {
-        await projectService.addProject(payload);
+      await contactService.deleteInquiry(id);  // ✅ Correct method
+      loadLeads();
+      if (selectedLead?.id === id) {
+        setShowModal(false);
+        setSelectedLead(null);
       }
-      resetForm();
-      loadProjects();
     } catch (err) {
-      setError('Failed to save project.');
+      setError('Failed to delete lead.');
     }
   };
 
-  const handleEdit = (project) => {
-    // Parse images string back to array
-    const images = project.images ? project.images.split(',').filter(img => img.trim()) : [];
-    setUploadedImages(images);
-    
-    setForm({
-      title: project.title,
-      category: project.category,
-      imageUrl: project.imageUrl,
-      description: project.description,
-      images: project.images || '',
+  const getInitials = (name) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const formatDate = (dateString) => {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
     });
-    setEditingId(project.id);
-    setShowForm(true);
-  };
-
-  const handleDelete = async (id) => {
-    if (!window.confirm('Delete this project?')) return;
-    try {
-      await projectService.deleteProject(id);
-      loadProjects();
-    } catch (err) {
-      setError('Failed to delete project.');
-    }
   };
 
   return (
-    <div className="projects-management-luxury">
+    <div className="leads-management-luxury">
       {/* Header */}
       <motion.div 
-        className="pm-header-luxury"
+        className="lm-header-luxury"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="pm-title-section">
-          <h2>Projects Management</h2>
-          <p className="pm-subtitle-luxury">
-            Manage your interior design portfolio
+        <div className="lm-title-section">
+          <h2>Leads Management</h2>
+          <p className="lm-subtitle-luxury">
+            Manage all inquiries from your contact form
           </p>
         </div>
-        <div className="pm-header-actions">
-          <span className="pm-count-badge">
-            {projects.length} Projects
-          </span>
-          <button 
-            className="pm-add-btn-luxury"
-            onClick={() => { resetForm(); setShowForm(true); }}
-          >
-            <span className="btn-icon">+</span>
-            Add Project
-          </button>
+        <div className="lm-stats-luxury">
+          <div className="lm-stat-badge">
+            <span className="stat-number">{leads.length}</span>
+            <span className="stat-label">Total Leads</span>
+          </div>
         </div>
       </motion.div>
 
       {/* Error */}
       {error && (
         <motion.div 
-          className="pm-error-luxury"
+          className="lm-error-luxury"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
         >
@@ -142,142 +104,98 @@ export default function ProjectsManagement() {
         </motion.div>
       )}
 
-      {/* Form */}
-      <AnimatePresence>
-        {showForm && (
-          <motion.form 
-            className="pm-form-luxury" 
-            onSubmit={handleSubmit}
-            initial={{ opacity: 0, y: -20, height: 0 }}
-            animate={{ opacity: 1, y: 0, height: 'auto' }}
-            exit={{ opacity: 0, y: -20, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <div className="pm-form-header">
-              <h3>{editingId ? 'Edit Project' : 'Add New Project'}</h3>
-              <button type="button" className="pm-form-close" onClick={resetForm}>✕</button>
-            </div>
-            
-            <div className="pm-form-grid">
-              <input 
-                name="title" 
-                placeholder="Project Title" 
-                value={form.title} 
-                onChange={handleChange} 
-                required 
-                className="pm-input"
-              />
-              <input 
-                name="category" 
-                placeholder="Category" 
-                value={form.category} 
-                onChange={handleChange} 
-                required 
-                className="pm-input"
-              />
-              
-              {/* ✅ IMAGE UPLOAD COMPONENT - This adds the upload option */}
-              <div className="pm-input full-width">
-                <ImageUpload 
-                  onImagesChange={handleImagesChange}
-                  existingImages={uploadedImages}
-                  maxImages={10}
-                  label="Project Images (Upload multiple photos)"
-                />
-              </div>
-              
-              <textarea 
-                name="description" 
-                placeholder="Project Description" 
-                value={form.description} 
-                onChange={handleChange} 
-                required 
-                className="pm-textarea"
-              />
-            </div>
-            
-            <div className="pm-form-actions-luxury">
-              <button type="submit" className="pm-btn-submit">
-                {editingId ? 'Update Project' : 'Add Project'}
-              </button>
-              <button type="button" className="pm-btn-cancel" onClick={resetForm}>
-                Cancel
-              </button>
-            </div>
-          </motion.form>
-        )}
-      </AnimatePresence>
-
       {/* Loading */}
       {loading && (
-        <div className="pm-loading-luxury">
-          <div className="pm-loader" />
-          <p>Loading projects...</p>
+        <div className="lm-loading-luxury">
+          <div className="lm-loader" />
+          <p>Loading leads...</p>
         </div>
       )}
 
       {/* Table */}
       {!loading && (
         <motion.div 
-          className="pm-table-wrapper-luxury"
+          className="lm-table-wrapper-luxury"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {projects.length === 0 ? (
-            <div className="pm-empty-luxury">
-              <span className="empty-icon">🏗️</span>
-              <h3>No projects yet</h3>
-              <p>Add your first project to showcase your portfolio.</p>
+          {leads.length === 0 ? (
+            <div className="lm-empty-luxury">
+              <span className="empty-icon">📭</span>
+              <h3>No leads yet</h3>
+              <p>Contact form submissions will appear here.</p>
             </div>
           ) : (
-            <table className="pm-table-luxury">
+            <table className="lm-table-luxury">
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Images</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Message</th>
+                  <th>Date</th>
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {projects.map((p, index) => (
+                {leads.map((lead, index) => (
                   <motion.tr 
-                    key={p.id}
+                    key={lead.id}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                     whileHover={{ backgroundColor: 'rgba(192, 160, 98, 0.04)' }}
                   >
                     <td>
-                      <img 
-                        src={p.imageUrl} 
-                        alt={p.title} 
-                        className="pm-thumb-luxury" 
-                        onError={(e) => {
-                          e.target.src = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800';
-                        }}
-                      />
-                    </td>
-                    <td className="pm-title-cell">{p.title}</td>
-                    <td>
-                      <span className="pm-category-badge">{p.category}</span>
+                      <div className="lm-name-cell">
+                        <div className="lm-avatar">
+                          {getInitials(lead.name)}
+                        </div>
+                        <span>{lead.name}</span>
+                      </div>
                     </td>
                     <td>
-                      {p.images && p.images.split(',').length > 0 ? (
-                        <span className="pm-images-count">
-                          📸 {p.images.split(',').length}
-                        </span>
-                      ) : (
-                        <span className="pm-images-count">📸 1</span>
-                      )}
+                      <a 
+                        href={`mailto:${lead.email}`} 
+                        style={{ color: 'var(--color-gold-dark)', textDecoration: 'none' }}
+                      >
+                        {lead.email}
+                      </a>
                     </td>
                     <td>
-                      <button className="pm-btn-edit" onClick={() => handleEdit(p)}>
-                        Edit
+                      <a 
+                        href={`tel:${lead.phone}`} 
+                        style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}
+                      >
+                        {lead.phone}
+                      </a>
+                    </td>
+                    <td>
+                      <span style={{ 
+                        display: 'inline-block',
+                        maxWidth: '200px',
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis'
+                      }}>
+                        {lead.message}
+                      </span>
+                    </td>
+                    <td style={{ fontSize: '13px', color: 'var(--color-text-muted)' }}>
+                      {formatDate(lead.createdAt)}
+                    </td>
+                    <td>
+                      <button 
+                        className="lm-btn-view" 
+                        onClick={() => handleViewLead(lead)}
+                      >
+                        View
                       </button>
-                      <button className="pm-btn-delete" onClick={() => handleDelete(p.id)}>
+                      <button 
+                        className="lm-btn-delete" 
+                        onClick={() => handleDeleteLead(lead.id)}
+                      >
                         Delete
                       </button>
                     </td>
@@ -288,6 +206,108 @@ export default function ProjectsManagement() {
           )}
         </motion.div>
       )}
+
+      {/* Modal */}
+      <AnimatePresence>
+        {showModal && selectedLead && (
+          <motion.div 
+            className="lm-modal-overlay-luxury"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowModal(false)}
+          >
+            <motion.div 
+              className="lm-modal-luxury"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="lm-modal-header-luxury">
+                <div className="lm-modal-avatar">
+                  {getInitials(selectedLead.name)}
+                </div>
+                <h3>{selectedLead.name}</h3>
+                <button 
+                  className="lm-modal-close" 
+                  onClick={() => setShowModal(false)}
+                >
+                  ✕
+                </button>
+              </div>
+
+              <div className="lm-modal-body-luxury">
+                <div className="lm-modal-field">
+                  <span className="field-icon">📧</span>
+                  <div>
+                    <label>Email</label>
+                    <p>
+                      <a 
+                        href={`mailto:${selectedLead.email}`} 
+                        style={{ color: 'var(--color-gold-dark)', textDecoration: 'none' }}
+                      >
+                        {selectedLead.email}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lm-modal-field">
+                  <span className="field-icon">📱</span>
+                  <div>
+                    <label>Phone</label>
+                    <p>
+                      <a 
+                        href={`tel:${selectedLead.phone}`} 
+                        style={{ color: 'var(--color-text-muted)', textDecoration: 'none' }}
+                      >
+                        {selectedLead.phone}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lm-modal-field">
+                  <span className="field-icon">📅</span>
+                  <div>
+                    <label>Submitted</label>
+                    <p style={{ color: 'var(--color-text-muted)', fontSize: '13px' }}>
+                      {formatDate(selectedLead.createdAt)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="lm-modal-field full-width">
+                  <span className="field-icon">💬</span>
+                  <div style={{ width: '100%' }}>
+                    <label>Message</label>
+                    <div className="lm-modal-message">
+                      {selectedLead.message}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lm-modal-footer-luxury">
+                <button 
+                  className="lm-modal-btn-close" 
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
+                <button 
+                  className="lm-modal-btn-delete" 
+                  onClick={() => handleDeleteLead(selectedLead.id)}
+                >
+                  Delete Lead
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
